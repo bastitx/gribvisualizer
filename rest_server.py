@@ -19,6 +19,21 @@ DEV = True
 app = Flask(__name__)
 CORS(app, send_wildcard=True)
 
+if not os.path.exists('ICON_GLOBAL2WORLD_025_EASY'):
+    r = requests.get('https://opendata.dwd.de/weather/lib/cdo/ICON_GLOBAL2WORLD_025_EASY.tar.bz2', stream=True)
+    r.raise_for_status()
+    with open('ICON_GLOBAL2WORLD_025_EASY.tar.bz2', 'wb') as fd:
+        for block in r.iter_content(chunk_size=1024):
+            fd.write(block)
+    rt = call(['tar', 'xf', 'ICON_GLOBAL2WORLD_025_EASY.tar.bz2'])
+    if rt != 0:
+        raise "Error with tar"
+    rt = call(['rm', 'ICON_GLOBAL2WORLD_025_EASY.tar.bz2'])
+    if rt != 0:
+        raise "Error with remove"
+        
+    
+
 targetfile = 'ICON_GLOBAL2WORLD_025_EASY/target_grid_world_025.txt'
 weightfile = 'ICON_GLOBAL2WORLD_025_EASY/weights_icogl2world_025.nc'
 file_key = { 'temp': '2t', 'pressure': 'prmsl', 'geopotential': 'z' }
