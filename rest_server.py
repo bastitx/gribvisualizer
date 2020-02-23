@@ -8,7 +8,7 @@ import numpy as np
 from PIL import Image
 from matplotlib import cm
 from pyproj import Proj
-from mpl_toolkits.basemap import shiftgrid, interp
+from basemap_func import shiftgrid, interp
 import matplotlib._contour as _contour
 import matplotlib as mpl
 import json
