@@ -2,3 +2,6 @@
 .DS_Store
 *.pyc
 *.grib2
+*.png
+ICON_GLOBAL2WORLD_025_EASY/
+*.json
