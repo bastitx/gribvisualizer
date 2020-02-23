@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 from matplotlib import cm
 from pyproj import Proj
-from mpl_toolkits.basemap import shiftgrid, interp
+from basemap_func import shiftgrid, interp
 
 f = sio.netcdf_file("icon_global_icosahedral_single-level_2018111000_000_T_2M.nc")
 data = f.variables['2t']
